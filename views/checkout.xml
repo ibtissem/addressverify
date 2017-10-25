@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+ <data>
+  <!-- Add message validation and js file -->
+  <template id="adresse_inherit_verify" name="Address Management" inherit_id="website_sale.address" >
+   <xpath expr="//input[@name='zip']" position="after">
+   </xpath>
+   
+   <xpath expr="//input[@name='city']" position="after">
+         <span id="validity_adresse" class=""></span>
+         <span t-esc="website.api_addressverify" id="span_api_key_adress" class="api_addressverify hidden"/>
+         <script src="/addressverify/static/src/js/addressverif.js"/>
+   </xpath>
+  </template>
+ </data>
+</openerp>
