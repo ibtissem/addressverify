@@ -4,26 +4,25 @@
 from odoo import api, models, fields
 
 
-class WebsiteConfigSettings(models.TransientModel):
-    _inherit = 'website.config.settings'
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
 
     #Api key of google maps
-    api_addressverify = fields.Char(related='website_id.api_addressverify') 
+    api_addressverify = fields.Char(string='Api Addressverify', related='website_id.api_addressverify' ) 
     
     @api.model
-    def get_default_api_addressverify(self, fields):
-        website_obj = self.env['website']
-        website = website_obj.search([])
+    def get_values(self):
+        get_param = self.env['ir.config_parameter'].sudo().get_param
+        res = super(ResConfigSettings, self).get_values()  
+        website = self.env['website'].search([])
         if website:
-            return {'api_addressverify': website[0].api_addressverify }
- 
-    @api.multi
-    def set_api_addressverify(self):
-        website_obj = self.env['website']
-        for record in self:
-            website = website_obj.search([])
-            numm = record.api_addressverify
-            if website:
-                for wbs in website:
-                    wbs.write({'api_addressverify': record.api_addressverify })
-        return True
+            res.update(
+                api_addressverify = website[0].api_addressverify,
+            )
+        return res
+    
+    def set_values(self):
+        super(ResConfigSettings, self).set_values() 
+        set_param = self.env['ir.config_parameter'].sudo().set_param
+        website = self.env['website'].search([])
+        rreess = website.write({'api_addressverify': self.api_addressverify})
