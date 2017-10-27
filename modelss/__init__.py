@@ -1,2 +1,2 @@
-import website
-import config
+from . import website
+from . import config
