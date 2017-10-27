@@ -4,13 +4,13 @@
   <!-- Add message validation and js file -->
   <template id="adresse_inherit_verify" name="Address Management" inherit_id="website_sale.address" >
    
-   <xpath expr="//input[@name='city']" position="after">
+    <xpath expr="//input[@name='city']" position="after">
          <span id="validity_adresse" class=""></span>
          <span t-esc="website.api_addressverify" id="span_api_key_adress" class="api_addressverify hidden"/>
          <script src="/addressverify/static/src/js/addressverify.js"/>
-   </xpath>
+    </xpath>
    
-   <xpath expr="//select[@name='country_id']" position="replace">
+    <xpath expr="//select[@name='country_id']" position="replace">
         <select id="country_id" name="country_id" class="form-control">
             <option value="">Country...</option>
             <t t-foreach="countries" t-as="c">
@@ -19,15 +19,16 @@
                 </option>
             </t>
         </select>
-   </xpath>
+    </xpath>
    
-      <xpath expr='//a[@class="btn btn-primary pull-right mb32 a-submit a-submit-disable a-submit-loading"]' position="replace">
+   <!-- add a verification on submit button if there is a problem with the address -->
+    <xpath expr='//a[@class="btn btn-primary pull-right mb32 a-submit a-submit-disable a-submit-loading"]' position="replace">
          <a id="submit_address_checkout" class="btn btn-primary pull-right mb32">
             <span>Next</span>
             <span class="fa fa-long-arrow-right" />
          </a>
          <script src="/addressverify/static/src/js/submit_validation.js"/>
-   </xpath>
+    </xpath>
   </template>
  </data>
 </openerp>

@@ -1,3 +1,4 @@
+// check if any class has error to prevent submit button
 $('#submit_address_checkout').click(function() {
     if ( $( "#div_phone" ).hasClass( "has-error" )){
     }

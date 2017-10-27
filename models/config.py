@@ -23,6 +23,6 @@ class ResConfigSettings(models.TransientModel):
     
     def set_values(self):
         super(ResConfigSettings, self).set_values() 
-        set_param = self.env['ir.config_parameter'].sudo().set_param
         website = self.env['website'].search([])
-        rreess = website.write({'api_addressverify': self.api_addressverify})
+        for wbs in website:
+            wbs.write({'api_addressverify': self.api_addressverify})
