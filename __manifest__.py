@@ -14,8 +14,9 @@
     'depends': ['base','website','website_sale'],
     'data': [  
         'views/config.xml', 
+        'views/checkout.xml', 
              ],
-    'qweb': ['static/src/xml/checkout.xml'],
+    'qweb': [],
     'installable': True,
 
 }
