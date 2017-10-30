@@ -12,7 +12,6 @@ class ResConfigSettings(models.TransientModel):
     
     @api.model
     def get_values(self):
-        get_param = self.env['ir.config_parameter'].sudo().get_param
         res = super(ResConfigSettings, self).get_values()  
         website = self.env['website'].search([])
         if website:
