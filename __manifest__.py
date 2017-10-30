@@ -2,7 +2,6 @@
 
 {
     'name': 'Addressverify connector',
-    'version': '11.0',
     'category': 'addressverify',
     'summary': 'Check the validation of the address in checkout form on the website',
     'version': '1.0',
